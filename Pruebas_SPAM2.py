@@ -1,18 +1,22 @@
 import streamlit as st
-from lime.lime_text import LimeTextExplainer
 import pickle
+import joblib
+from lime.lime_text import LimeTextExplainer
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.svm import SVC
+
 
 # Suponemos que el modelo y el vectorizador están preentrenados y cargados
 # Puedes usar `pickle.load(open('modelo_entrenado.pkl', 'rb'))` para cargarlos
 # Aquí inicializamos `CountVectorizer` y `SVC` solo como referencia
 
 # Cargar el modelo y el vectorizador entrenado
-with open('C:/Users/Luis.fernandez/01. Python/13. Proyecto ML y NLP/modelo_entrenado.pkl', 'rb') as model_file:
-    svm_model = pickle.load(model_file)
+# with open('C:/Users/Luis.fernandez/01. Python/13. Proyecto ML y NLP/modelo_entrenado_comprimido.pkl', 'rb') as model_file:
+#     svm_model = pickle.load(model_file)
 
-with open('C:/Users/Luis.fernandez/01. Python/13. Proyecto ML y NLP/vectorizador_entrenado.pkl', 'rb') as vectorizer_file:
+svm_model = joblib.load('modelo_entrenado_comprimido.pkl')
+
+with open('vectorizador_entrenado.pkl', 'rb') as vectorizer_file:
     cv = pickle.load(vectorizer_file)
 
 #cv = CountVectorizer()  # Sustituir por el CountVectorizer entrenado
