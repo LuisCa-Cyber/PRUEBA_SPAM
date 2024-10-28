@@ -26,7 +26,7 @@ with open('vectorizador_entrenado.pkl', 'rb') as vectorizer_file:
 explainer = LimeTextExplainer(class_names=['HAM', 'SPAM'])
 
 # Configuración de la aplicación Streamlit
-st.title("Detector de Spam con Explicación")
+st.title("Detector de Spam")
 st.write("Ingrese un mensaje y presione el botón para verificar si es spam o no.")
 
 # Entrada de texto del usuario
@@ -51,7 +51,7 @@ if st.button("Verificar si es Spam"):
         explicacion = interpretar_mensaje(input_text)
         
         # Mostrar resultado de la predicción
-        st.write("Explicación de la predicción:")
+        st.write("Resultado y explicación:")
         st.components.v1.html(explicacion.as_html(), height=800)
     else:
         st.write("Por favor, ingrese un mensaje para analizar.")
